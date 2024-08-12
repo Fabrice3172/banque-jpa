@@ -6,18 +6,19 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "banque")
+@Table(name = "BANQUE")
 public class Banque {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private int id;
 
-    @Column(name="NOM")
+    @Column(name = "NOM")
     private String nom;
 
     @OneToMany(mappedBy = "banque")
     private Set<Client> clients;
+
     public Banque() {
         clients = new HashSet<Client>();
     }
@@ -34,6 +35,14 @@ public class Banque {
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public Set<Client> getClients() {
+        return clients;
+    }
+
+    public void setClients(Set<Client> clients) {
+        this.clients = clients;
     }
 
     @Override

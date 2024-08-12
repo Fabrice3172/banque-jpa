@@ -6,11 +6,12 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "OPERATION")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Operation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="ID")
+    @Column(name = "ID")
     private int id;
 
     @Column(name = "DATE")
@@ -60,6 +61,22 @@ public class Operation {
 
     public void setMotif(String motif) {
         this.motif = motif;
+    }
+
+    public Compte getCompte() {
+        return compte;
+    }
+
+    public void setCompte(Compte compte) {
+        this.compte = compte;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override
